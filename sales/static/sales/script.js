@@ -48,5 +48,6 @@
 
     document.querySelector('#contact').addEventListener('click',(e)=>{
         e.preventDefault();
+        document.querySelector('#close').click()
         page.innerHTML = '<h1>Email: pimpy6565@gmail.com<br>Creator: Chris<br>Will get back to you as soon as i can!<br><b>Thank You!</b></h1><br>  <img src="static/sales/whale.png">'
     })
