@@ -1,0 +1,18 @@
+{% extends 'sales/layout.html' %}
+
+{% block title %}
+    Category
+{% endblock %}
+
+{% block body %}
+
+{% for item in data %}
+<div class="mb-3">
+    <form action="{% url 'items' item.category %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-primary w-100 p-3">{{item.category}}</button>
+    </form>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+.swipe-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .hidden-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100px;
+    background-color: red;
+    color: white;
+    border: none;
+    z-index: 1;
+  }
+  
+  .swipe-container .btn-primary {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    transition: left 0.2s ease;
+  }

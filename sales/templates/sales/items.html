@@ -1,0 +1,45 @@
+{% extends 'sales/layout.html' %}
+
+{% block title %}
+
+    Item List
+
+{% endblock %}
+
+
+{% block body %}
+    
+    {% for i in data %}
+    <div class="mb-3 d-flex">
+      
+       
+       <button id='main-btn' onclick="fix('{{i.website_link}}','{{i.name}}')" class="btn btn-primary w-100 p-3">{{i.name}} {{i.price}} Units: Per {{i.unit}}</button>
+       
+    </div>
+    
+    {% endfor %}
+    
+    <script>
+        function fix(url,name){
+        
+        let parsedUrl = new URL(url);
+
+// Extract the main URL
+        let mainUrl = parsedUrl.origin;
+        console.log(mainUrl)
+  // Output: https://www.example.com
+        if (mainUrl == 'https://www.walmart.com'){
+        window.location.href = mainUrl + '/search?q=' + name;
+        }
+        if (mainUrl == 'https://www.target.com'){
+            window.location.href = mainUrl + '/s?searchTerm=' + name;
+        }
+        if (mainUrl == 'https://www.kroger.com'){
+            window.location.href = mainUrl + '/search?query=' + name;
+        }
+        }
+
+
+        
+    </script>
+{% endblock %}
