@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import *
 from django.http import JsonResponse
 from django.core.paginator import Paginator
+from .helper import *
 # Create your views here.
 
 def index(request):
@@ -53,3 +54,34 @@ def help(request):
 
 def about(request):
     return render(request,'sales/about.html')
+
+def recipe(request,lookup):
+
+    Food = food(lookup) 
+    instructions = Food.instructions
+    img = Food.img
+    video = Food.video        
+    ingredients = Food.get_ingredients()
+        
+    return render(request,'sales/recipe.html',{
+        'instructions':instructions if instructions else '',
+        'img':img if img else '',
+        'ingredients':ingredients if ingredients else '',
+        'name':lookup,
+        'video':video.replace('watch?v=','embed/') if video else ''
+        
+    })
+    
+def Form(request):
+    cat,img= CATEGORY()
+    return render(request,'sales/form.html',{
+        'cat':zip(cat,img)
+
+    })
+    
+def view_meals(request,cat):
+    meal,img = ITEM(cat)
+    return render(request,'sales/snacks.html',{
+        'post': zip(meal,img),
+        'cat':cat
+    })

@@ -1,0 +1,20 @@
+{% extends 'sales/layout.html' %}
+
+{% block title %}
+
+Recipe Look-up
+
+{% endblock %}
+
+{% block body %}
+
+{% for i,j in cat %}
+<div class="d-grid gap-2 mb-3">
+    <form action="{% url 'snacks' i %}" method="post">
+        {% csrf_token %}
+    <button type='submit' class="btn btn-primary w-100 p-3" style="font-size: xx-large;">{{i}} <img src="{{j}}" class="rounded mx-auto d-block"></button>
+    </form>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'sales/layout.html' %}
+
+{% block title %}
+
+{{cat.capitalize}}
+
+{% endblock %}
+
+{% block body %}
+
+{% for i,j in post %}
+<div class="d-grid gap-2 mb-3">
+    <form action="{% url 'recipe' i %}" method="post">
+        {% csrf_token %}
+    <button type='submit' class="btn btn-primary w-100 p-3" style="font-size: xx-large;">{{i}} <img src="{{j}}" width='250px' height='250px';class="rounded mx-auto d-block"></button>
+    </form>
+</div>
+{% endfor %}
+
+{% endblock %}

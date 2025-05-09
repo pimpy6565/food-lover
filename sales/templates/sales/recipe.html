@@ -1,0 +1,57 @@
+{% extends 'sales/layout.html' %}
+
+{% load static %}
+
+{% block title %}
+
+
+{{name}}
+
+{% endblock %}
+
+
+{% block body %}
+<div class="mb-3">
+<h1>{{name.capitalize}}</h1>
+<br>
+<img src="{{img}}" style="max-width: 100%; height: auto;">
+<br><br>
+<table class="table table-striped table-hover table-bordered border-success">
+    <thead>
+        <tr>
+            <th><h2>Ingredient</h2></th>
+            <th><h2>Measure</h2></th>
+        </tr>
+    </thead>
+    <tbody>
+{% for i in ingredients %}
+    <tr>
+        <td><h4>{{i.Ingredient}}</h4></td>
+        <td><h4>{{i.Measure}}</h4></td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+<br>
+<p style="font-size:x-large;">{{instructions}}</p>
+<br>
+
+<div id="video-container">
+    <button class="btn btn-primary" onclick="loadVideo()">
+        <i class="fas fa-play"></i> Play Video
+      </button>
+</div>
+<script>
+    function loadVideo() {
+      document.getElementById('video-container').innerHTML = `
+        <iframe
+          src="{{video}}"
+          style="width:100%; height:315px; border:none;"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+          allowfullscreen>
+        </iframe>
+      `;
+    }
+  </script>
+</div>
+{% endblock %}

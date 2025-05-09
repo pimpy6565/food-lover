@@ -8,5 +8,8 @@ urlpatterns =[
     path('search',views.search,name='search'),
     path('scroll',views.infinite_scroll,name='scroll'),
     path('help',views.help,name='help'),
-    path('about',views.about,name='about')
+    path('about',views.about,name='about'),
+    path('recipe/<str:lookup>/',views.recipe,name='recipe'),
+    path('form',views.Form,name='form'),
+    path('snacks/<str:cat>',views.view_meals,name='snacks')
 ]
